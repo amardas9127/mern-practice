@@ -100,4 +100,40 @@ const sortDoc =async()=>{
         console.log("Not Exists");
     }
 }
-export { createDoc, allDoc,getDoc,singleDoc,countDoc, sortDoc };
+
+
+//update the info in the database
+const updateDocs =async()=>{
+  try {
+
+    //updateone(filter,Changes)
+      const result =await movieModel.updateOne({_id : "66e3376248c5c567bc2c186d5"}, {name : "Amar"})
+      console.log(result);
+  } catch (error) {
+      console.log("Not Exists");
+  }
+}
+
+const updateManyDocs =async()=>{
+  try {
+
+    //updateone(filter,Changes)
+      const result =await movieModel.updateMany({ratings : 4}, {name : "Amar"})
+      console.log(result);
+  } catch (error) {
+      console.log("Not Exists");
+  }
+}
+
+const deleteDocs =async()=>{
+  try {
+
+    //use deleteone for deleting one with any fields or use deletemany for deleting many items same as the update
+      const result =await movieModel.findByIdAndDelete("66e3376248c5c567bc2c186d")
+      console.log(result);
+  } catch (error) {
+      console.log("Not Exists");
+  }
+}
+
+export { createDoc, allDoc,getDoc,singleDoc,countDoc, sortDoc,updateDocs,updateManyDocs ,deleteDocs};
